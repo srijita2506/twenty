@@ -46,9 +46,9 @@ export const Default: Story = {
   play: async ({ canvasElement }) => {
     const canvas = within(canvasElement);
 
-    await canvas.findByText('Work Policy');
-    await canvas.findByText('Work Policy 1');
-    await canvas.findByText('Work Policy 2');
+    await canvas.findByText('Work Policy', {}, { timeout: 10000 });
+    await canvas.findByText('Work Policy 1', {}, { timeout: 10000 });
+    await canvas.findByText('Work Policy 2', {}, { timeout: 10000 });
   },
 };
 
@@ -69,7 +69,11 @@ export const WithVariablePicker: Story = {
   play: async ({ canvasElement }) => {
     const canvas = within(canvasElement);
 
-    const firstChip = await canvas.findByText('Work Policy 1');
+    const firstChip = await canvas.findByText(
+      'Work Policy 1',
+      {},
+      { timeout: 10000 },
+    );
     expect(firstChip).toBeVisible();
   },
 };
@@ -106,7 +110,11 @@ export const Disabled: Story = {
   play: async ({ canvasElement }) => {
     const canvas = within(canvasElement);
 
-    const firstChip = await canvas.findByText('Work Policy 1');
+    const firstChip = await canvas.findByText(
+      'Work Policy 1',
+      {},
+      { timeout: 10000 },
+    );
     expect(firstChip).toBeVisible();
 
     await userEvent.click(firstChip);

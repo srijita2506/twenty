@@ -70,6 +70,7 @@ const setupMockState = (
   objectNamePlural?: string,
   verifyEmailRedirectPath?: string,
   calendarBookingPageId?: string | null,
+  settingsRedirectPath?: string,
   returnToPath?: string,
 ) => {
   jest
@@ -77,6 +78,7 @@ const setupMockState = (
     .mockReturnValueOnce(calendarBookingPageId ?? 'mock-calendar-id')
     .mockReturnValueOnce([{ namePlural: objectNamePlural ?? '' }])
     .mockReturnValueOnce(verifyEmailRedirectPath)
+    .mockReturnValueOnce(settingsRedirectPath)
     .mockReturnValueOnce(returnToPath ?? '');
 };
 
@@ -361,6 +363,7 @@ describe('usePageChangeEffectNavigateLocation', () => {
       setupMockState(
         objectNamePluralFromMetadata,
         verifyEmailRedirectPath,
+        undefined,
         undefined,
         returnToPath,
       );
